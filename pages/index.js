@@ -1,7 +1,25 @@
 import Layout from '../components/layout'
 import Channel from '../components/channel'
+import axios from 'axios'
 
-export default function Home() {
+export async function getStaticProps() {
+    let channelList = {};
+    axios.get('http://localhost:3000/api/channels/all')
+    .then(response => {
+        channelList = response.data;
+    }).catch(error => {
+        console.log('Error fetching data, ' + error)
+    })
+
+    console.log(channelList)
+    return {
+        props: {
+            channelList
+        }
+    }
+}
+
+export default function Home({channelList}) {
   return (
     <Layout>
       <header className="bg-dark py-5 mt-5">
@@ -15,24 +33,17 @@ export default function Home() {
     <section className="py-5">
         <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div className="col mb-5">
-                    <Channel title="Barcelona vs Real Madrid" type="Evento" source="https://ian.radamel.icu/reproductor/directv.php?width=700&amp;height=438"/>
-                </div>
-                <div className="col mb-5">
-                    <Channel title="Direct tv" type="Canal" source="https://ian.radamel.icu/reproductor/directv.php?width=700&amp;height=438"/>
-                </div>
-                <div className="col mb-5">
-                    <Channel title="Bein Sports" type="Canal" source="https://ian.radamel.icu/reproductor/directv.php?width=700&amp;height=438"/>
-                </div>
-                <div className="col mb-5">
-                    <Channel title="Bein Sports" type="Canal" source="https://ian.radamel.icu/reproductor/directv.php?width=700&amp;height=438"/>
-                </div>
-                <div className="col mb-5">
-                    <Channel title="Bein Sports" type="Canal" source="https://ian.radamel.icu/reproductor/directv.php?width=700&amp;height=438"/>
-                </div>
-                <div className="col mb-5">
-                    <Channel title="Bein Sports" type="Canal" source="https://ian.radamel.icu/reproductor/directv.php?width=700&amp;height=438"/>
-                </div>
+                {
+                    channelList > 0 ? (
+                        channelList.map((item, index) => (
+                            <div className="col mb-5" key={index}>
+                                <Channel title={item.name} type={item.type} source={item.source} slug={item.slug}/>
+                            </div>
+                        ))
+                    ) : (
+                        <h3>No data source</h3>
+                    )
+                }
             </div>
         </div>
       </section>

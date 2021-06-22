@@ -7,7 +7,8 @@ const handler = async (req, res) => {
             let channel = new Channel({
                 name: 'Direct TV', 
                 source:'https://pelotero.net/directvsports.php',
-                type: 'channel'
+                type: 'channel',
+                slug: 'channel-direct-tv'
             })
 
             channel.save((error) => {

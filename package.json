@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+    "mongodb": "^3.6.9",
     "mongoose": "^5.12.14",
     "next": "^10.0.0",
     "react": "17.0.1",
