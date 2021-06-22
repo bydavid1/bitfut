@@ -10,6 +10,10 @@ var channel = new Schema({
     type: String,
     required: true
   },
+  slug: {
+    type: String,
+    required: true
+  }
 });
 
 var Channel = mongoose.models.Channel || mongoose.model('Channel', channel);
