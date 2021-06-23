@@ -1,35 +1,28 @@
 import Layout from '../../components/layout'
 import Channel from '../../models/Channel'
 import Head from 'next/head'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 export default function Stream({currentChannel}) {
 
     let frameElement = useRef(null)
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         let m = document.createElement("meta");
-    //         m.httpEquiv = "content-security-policy";
-    //         m.content = "script-src 'self' 'unsafe-inline';";
-    
-    //         console.log(frameElement)
-            
-    //         if (frameElement.current != null) {
-    //             frameElement.current.contentDocument.documentElement.appendChild(m)
-    //         }
-        
-    //     }, 500);
-    // })
+    function blockScripts() {
+        let m = document.createElement("meta");
+        m.httpEquiv = "content-security-policy";
+        m.content = "script-src 'self' 'unsafe-inline';";
+
+        console.log(frameElement)
+    }
 
     return (
         <>
             <Head>
                 <title>{currentChannel.name}</title>
-                <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+                <meta http-equiv="Content-Security-Policy" content="script-src 'self' *.telerium.club;"/>
             </Head>
             <Layout>
-                <div className="container vh-100 py-5">
+                <div className="container mt-5 py-5">
                     <div className="d-flex align-items-center justify-content-center h-100">
                         <div className="card text-center">
                             <div className="card-header">
@@ -37,12 +30,13 @@ export default function Stream({currentChannel}) {
                             </div>
                             <div className="card-body">
                                 <iframe ref={frameElement} src={currentChannel.source} 
-                                sandbox="allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" 
-                                width="700" 
-                                height="438"
+                                sandbox="allow-same-origin allow-scripts" 
+                                width="1024" 
+                                height="450"
                                 frameBorder="0" 
                                 scrolling="no" 
-                                allowFullScreen="true"/>
+                                allowFullScreen="true"
+                                onLoad={blockScripts}/>
                             </div>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">Compartir</li>
