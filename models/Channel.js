@@ -13,6 +13,10 @@ var channel = new Schema({
   slug: {
     type: String,
     required: true
+  },
+  slug: {
+    type: String,
+    required: true
   }
 });
 
