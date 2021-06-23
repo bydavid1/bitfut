@@ -1,8 +1,26 @@
 import Layout from '../../components/layout'
 import Channel from '../../models/Channel'
 import Head from 'next/head'
+import { useEffect, useRef } from 'react'
 
 export default function Stream({currentChannel}) {
+
+    let frameElement = useRef(null)
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         let m = document.createElement("meta");
+    //         m.httpEquiv = "content-security-policy";
+    //         m.content = "script-src 'self' 'unsafe-inline';";
+    
+    //         console.log(frameElement)
+            
+    //         if (frameElement.current != null) {
+    //             frameElement.current.contentDocument.documentElement.appendChild(m)
+    //         }
+        
+    //     }, 500);
+    // })
 
     return (
         <>
@@ -18,7 +36,13 @@ export default function Stream({currentChannel}) {
                                 En vivo 
                             </div>
                             <div className="card-body">
-                                <iframe src={currentChannel.source} width="700" height="438" frameBorder="0" scrolling="no" allowFullScreen="true"></iframe> 
+                                <iframe ref={frameElement} src={currentChannel.source} 
+                                sandbox="allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" 
+                                width="700" 
+                                height="438"
+                                frameBorder="0" 
+                                scrolling="no" 
+                                allowFullScreen="true"/>
                             </div>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">Compartir</li>
