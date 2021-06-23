@@ -2,7 +2,6 @@ import Layout from '../components/layout'
 import Card from '../components/card'
 import Channel from '../models/Channel';
 import dbConnect from '../server/dbConnect';
-require('dotenv').config()
 
 const Index = ({channelList}) => {
   return (
@@ -43,7 +42,7 @@ export async function getServerSideProps() {
 
     let results = await Channel.find({}).select('name type slug -_id')
     channelList = JSON.parse(JSON.stringify(results))
-    console.log(channelList)
+
     return {
         props: {
             channelList

@@ -1,8 +1,11 @@
-import connectDB from '../../../server/mongodb';
+import dbConnect from '../../../server/dbConnect';
 import Channel from '../../../models/Channel';
 
 const handler = async (req, res) => {
     try {
+
+        await dbConnect()
+
         if (req.method === 'GET') {
             Channel.find((err, items) => {
                 if (err) {
@@ -17,4 +20,4 @@ const handler = async (req, res) => {
     }
 };
 
-export default connectDB(handler);
+export default handler;
