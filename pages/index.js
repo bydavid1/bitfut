@@ -1,25 +1,10 @@
 import Layout from '../components/layout'
-import Channel from '../components/channel'
-import axios from 'axios'
+import Card from '../components/card'
+import Channel from '../models/Channel';
+import dbConnect from '../server/dbConnect';
+require('dotenv').config()
 
-export async function getStaticProps() {
-    let channelList = {};
-    axios.get('http://localhost:3000/api/channels/all')
-    .then(response => {
-        channelList = response.data;
-    }).catch(error => {
-        console.log('Error fetching data, ' + error)
-    })
-
-    console.log(channelList)
-    return {
-        props: {
-            channelList
-        }
-    }
-}
-
-export default function Home({channelList}) {
+const Index = ({channelList}) => {
   return (
     <Layout>
       <header className="bg-dark py-5 mt-5">
@@ -34,10 +19,10 @@ export default function Home({channelList}) {
         <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 {
-                    channelList > 0 ? (
+                    channelList.length > 0 ? (
                         channelList.map((item, index) => (
                             <div className="col mb-5" key={index}>
-                                <Channel title={item.name} type={item.type} source={item.source} slug={item.slug}/>
+                                <Card title={item.name} type={item.type}  slug={item.slug}/>
                             </div>
                         ))
                     ) : (
@@ -50,3 +35,20 @@ export default function Home({channelList}) {
     </Layout>
   )
 }
+
+export async function getServerSideProps() {
+    let channelList = {};
+
+    await dbConnect()
+
+    let results = await Channel.find({}).select('name type slug -_id')
+    channelList = JSON.parse(JSON.stringify(results))
+    console.log(channelList)
+    return {
+        props: {
+            channelList
+        }
+    }
+}
+
+export default Index

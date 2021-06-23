@@ -12,7 +12,7 @@ export default function Card(props) {
                 </div>
             </div>
             <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div className="text-center"><Link href="/stream"><a className="btn btn-outline-dark mt-auto">Ver ahora</a></Link>
+                <div className="text-center"><Link href={`/stream/${props.slug}`}><a className="btn btn-outline-dark mt-auto">Ver ahora</a></Link>
                 </div>
             </div>
         </div>

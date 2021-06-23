@@ -1,15 +1,12 @@
-import connectDB from '../../../server/mongodb';
+import dbConnect from '../../../server/dbConnect';
 import Channel from '../../../models/Channel';
 
 const handler = async (req, res) => {
     try {
+        await dbConnect()
+        
         if (req.method === 'POST') {
-            let channel = new Channel({
-                name: 'Direct TV', 
-                source:'https://pelotero.net/directvsports.php',
-                type: 'channel',
-                slug: 'channel-direct-tv'
-            })
+            let channel = new Channel(req.body)
 
             channel.save((error) => {
                 if (error) {
@@ -26,4 +23,4 @@ const handler = async (req, res) => {
     }
 };
 
-export default connectDB(handler);
+export default handler;
