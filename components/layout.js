@@ -4,7 +4,7 @@ import Coffee from './coffee'
 export default function Layout({ children }) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div className="container px-4 px-lg-5">
                     <Link href="/"><a className="navbar-brand">Bitfut</a></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
