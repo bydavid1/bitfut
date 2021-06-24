@@ -25,11 +25,13 @@ const Index = () => {
             <section className="text-center mt-5 py-5">
                 <div className="container">
                     <h1>Bitfutbol</h1>
-                    <p className="lead text-muted">Un sitio hecho por Byron Jimenez, con el objetivo de practicar nuevas tecnologías y a la vez crear algo interesante que a la gente le pueda servir o entretener. </p>
+                    <p className="lead text-muted">Un sitio hecho por Byron Jimenez, con el objetivo de practicar nuevas tecnologías y a la vez crear algo      interesante que a la gente le pueda servir o entretener. </p>
+                    <div className="d-grid gap-2 col-sm-3 mx-auto">
                         <Link href="/">
-                            <a className="btn btn-primary my-2">Ir al inicio</a>
+                            <a className="btn btn-primary my-2" role="button">Ir al inicio</a>
                         </Link>
-                        <Coffee/>
+                        <Coffee role="button"/>
+                    </div>
                 </div>
             </section>
             <div className="py-5 bg-light">
