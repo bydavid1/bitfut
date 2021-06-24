@@ -6,11 +6,21 @@ import dbConnect from '../server/dbConnect';
 import Head from 'next/head'
 
 const Index = ({channelList}) => {
+
+    let currentPath = ''
+    if (typeof window !== 'undefined') {
+        currentPath = window.location.href;
+    }
+
   return (
     <>
         <Head>
             <title>Bitfutbol</title>
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdnjs.buymeacoffee.com/"/>
+            <meta property="og:title" content={ `Bitfutbol - Inicio` }  />
+            <meta property="og:description" content={`Mira fulbol online y totalmente gratis en Bitfutbol`} />
+            <meta property="og:image" content="/images/static/meta-image.jpg"/>
+            <meta property="og:url" content={currentPath}/>
         </Head>
         <Layout>
             <header className="bg-dark py-5 mt-5" 

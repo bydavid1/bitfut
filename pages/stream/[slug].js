@@ -59,27 +59,26 @@ export default function Stream({currentChannel}) {
                                 <FacebookShareButton
                                     url={currentPath}
                                     hashtag={'#bitfutbol'}
-                                    className="pr-2">
+                                    className="pe-2">
                                     <FacebookIcon size={32} round />
                                 </FacebookShareButton>
                                 <TwitterShareButton
                                     url={currentPath}
                                     hashtag={'#bitfutbol'}
-                                    className="pr-2">
+                                    className="pe-2">
                                     <TwitterIcon size={32} round />
                                 </TwitterShareButton>
                                 <WhatsappShareButton
                                     url={currentPath}
-                                    className="pr-2">
+                                    className="pe-2">
                                     <WhatsappIcon size={32} round />
                                 </WhatsappShareButton>
                                 <TelegramShareButton
                                     url={currentPath}
-                                    className="pr-2">
+                                    className="pe-2">
                                     <TelegramIcon size={32} round />
                                 </TelegramShareButton>
                                 </li>
-                                <li className="list-group-item">Twitter</li>
                             </ul>
                         </div>
                     </div>
