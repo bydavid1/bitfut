@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { url } from '../next.config'
 
 const connection = {} /* creating connection object*/
 
@@ -10,7 +9,7 @@ async function dbConnect() {
   }
 
   /* connecting to our database */
-  const db = await mongoose.connect(url, {
+  const db = await mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
