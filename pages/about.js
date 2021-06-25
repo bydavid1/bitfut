@@ -17,7 +17,7 @@ const Index = () => {
             <title>Bitfutbol</title>
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdnjs.buymeacoffee.com/"/>
             <meta property="og:title" content={ `Bitfutbol - Acerca de` }  />
-            <meta property="og:description" content={`Mira fulbol online y totalmente gratis en Bitfutbol`} />
+            <meta property="og:description" content={`Mira futbol online y totalmente gratis en Bitfutbol`} />
             <meta property="og:image" content="/images/static/meta-image.jpg"/>
             <meta property="og:url" content={currentPath}/>
         </Head>

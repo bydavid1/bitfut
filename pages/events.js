@@ -18,7 +18,7 @@ const Events = ({eventsList}) => {
             <title>Bitfutbol - Eventos</title>
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' *.telerium.club;"/>
             <meta property="og:title" content={ `Bitfutbol - Eventos` }  />
-            <meta property="og:description" content={`Mira fulbol online y totalmente gratis en Bitfutbol`} />
+            <meta property="og:description" content={`Mira futbol online y totalmente gratis en Bitfutbol`} />
             <meta property="og:image" content="/images/static/meta-image.jpg"/>
             <meta property="og:url" content={currentPath}/>
         </Head>
@@ -39,10 +39,10 @@ const Events = ({eventsList}) => {
                 <div className="container px-4 px-lg-5 mt-5">
                 {
                     eventsList.length > 0 ? (
-                        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        <div className="row">
                             {
                                 eventsList.map((item, index) => (
-                                    <div className="col mb-5" key={index}>
+                                    <div className="col-sm-3 mb-5" key={index}>
                                         <Card title={item.name} type={item.type}  slug={item.slug}/>
                                     </div>
                                 ))
